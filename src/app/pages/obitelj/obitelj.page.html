@@ -1,0 +1,19 @@
+<ion-content [fullscreen]="true">
+  <ion-button (click)="toggleImage()">+</ion-button>
+
+  <div class="img-container" [class.show]="showImage">
+    <img 
+      src="assets/bow.png" 
+      alt="bow" 
+      class="draggable" 
+      draggable="true" 
+      (dragstart)="dragStart($event)"
+    >
+  </div>
+
+  <div 
+    class="drop-zone" 
+    (dragover)="allowDrop($event)" 
+    (drop)="onDrop($event)">
+  </div>
+</ion-content>

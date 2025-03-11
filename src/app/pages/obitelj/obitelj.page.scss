@@ -1,0 +1,53 @@
+ion-content {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    --background: url("/assets/1 - obitelj, upoznavanje.jpg") no-repeat center / cover;
+  }
+
+  ion-button {
+    height: 30vmin;
+    width: 30vmin;
+    --border-radius: 50%;
+    font-size: 3rem;
+    --background:  #a3622a;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+
+
+  .img-container {
+    position: fixed;
+    top: 50%;
+    left: -100%;
+    transform: translateY(-50%);
+    transition: left 0.5s ease-in-out;
+    width: 30%;
+    height: 100%;
+    background-color: #a3622a;
+    padding: 1rem;
+  }
+  
+  .img-container.show {
+    left: 0px;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .drop-zone {
+    height: 20vmin;
+    width: 20vmin;
+    position: relative;
+    left: 65%;
+    top: 25%;
+  }
+  
+  .drop-zone.show {
+    right: 0px;
+  }
