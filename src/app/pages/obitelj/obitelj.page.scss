@@ -3,19 +3,24 @@ ion-content {
     margin: 0;
     height: 100%;
     width: 100%;
-    --background: url("/assets/1 - obitelj, upoznavanje.jpg") no-repeat center / cover;
+    --background: url("/assets/1 - obitelj, upoznavanje.jpg") no-repeat center center/cover;
   }
 
-  ion-button {
-    height: 30vmin;
-    width: 30vmin;
-    --border-radius: 50%;
-    font-size: 3rem;
-    --background:  #a3622a;
+  .toggleBtn {
+    //width: 15%;
+    //--border-radius: 50%;
+    font-size: 2rem;
+    --background:  #a34a2a;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0%);
+  }
+
+  .nextBtn {
+    font-size: 2rem;
+    --background:  #a34a2a;
+    --color: white;
   }
 
 
@@ -36,7 +41,7 @@ ion-content {
   }
   
   img {
-    width: 100%;
+    width: 50%;
     height: auto;
   }
   
@@ -49,5 +54,24 @@ ion-content {
   }
   
   .drop-zone.show {
+    right: 0px;
+  }
+
+  .info-container {
+    background-color: #8e8f92;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  
+  .info-container.show {
     right: 0px;
   }

@@ -1,19 +1,28 @@
 <ion-content [fullscreen]="true">
-  <ion-button (click)="toggleImage()">+</ion-button>
+  <ion-button (click)="toggleImage()" class="toggleBtn">+</ion-button>
 
-  <div class="img-container" [class.show]="showImage">
-    <img 
-      src="assets/bow.png" 
-      alt="bow" 
-      class="draggable" 
-      draggable="true" 
-      (dragstart)="dragStart($event)"
-    >
+  <div 
+    class="img-container" 
+    [class.show]="showImage"
+    draggable="true" 
+    (dragstart)="dragStart($event)">
+    <img src="assets/bow.png" alt="bow">
   </div>
 
   <div 
-    class="drop-zone" 
+    class="drop-zone"
     (dragover)="allowDrop($event)" 
     (drop)="onDrop($event)">
+  </div>
+
+  <div class="info-container" *ngIf="showInfo">
+    <h1>INFO</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      Enim placeat, in eum illum totam ullam architecto!
+    </p>
+    <ion-button class="nextBtn" (click)="nextPage()">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
   </div>
 </ion-content>

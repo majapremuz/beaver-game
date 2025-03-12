@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class ObiteljPage implements OnInit {
   showImage = false;
+  showInfo = false; // Controls visibility of info container
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -18,22 +19,28 @@ export class ObiteljPage implements OnInit {
   }
 
   dragStart(event: DragEvent) {
-    event.dataTransfer?.setData('text', 'bow');
+    if (event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/plain', 'bow');
+    }
   }
 
   allowDrop(event: DragEvent) {
-    event.preventDefault(); // Necessary to allow dropping
+    event.preventDefault(); // Allow the drop
   }
 
   onDrop(event: DragEvent) {
     event.preventDefault();
-    const data = event.dataTransfer?.getData('text');
+    const data = event.dataTransfer?.getData('text/plain');
 
     if (data === 'bow') {
-      alert('Correct! Moving to the next level.');
-      this.router.navigate(['/next-page']);
+      this.showInfo = true; // Show info container
     } else {
       alert('Try again!');
     }
+  }
+
+  nextPage() {
+    this.router.navigate(['/next-page']);
   }
 }

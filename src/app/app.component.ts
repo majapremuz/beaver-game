@@ -6,6 +6,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +21,11 @@ export class AppComponent {
     private router: Router,
     public platform: Platform,
     public translateConfigService: TranslateConfigService,
-    public dataCtrl: ControllerService
+    public dataCtrl: ControllerService,
+    private screenOrientation: ScreenOrientation
   ) {
     this.initApp();
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   async initApp(){

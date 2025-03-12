@@ -15,6 +15,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -31,7 +33,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
       }
     })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },  ScreenOrientation],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
