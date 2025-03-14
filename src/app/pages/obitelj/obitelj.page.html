@@ -1,28 +1,57 @@
 <ion-content [fullscreen]="true">
   <ion-button (click)="toggleImage()" class="toggleBtn">+</ion-button>
 
-  <div 
-    class="img-container" 
-    [class.show]="showImage"
-    draggable="true" 
-    (dragstart)="dragStart($event)">
-    <img src="assets/bow.png" alt="bow">
+  <!-- Image Container with draggable images -->
+  <div class="img-container" [class.show]="showImage">
+    <img *ngIf="!droppedImages.stick1" src="assets/stick1.png" alt="stick1" 
+         draggable="true" 
+         (dragstart)="dragStart($event, 'stick1')">
+    <img *ngIf="!droppedImages.stick2" src="assets/stick2.png" alt="stick2" 
+         draggable="true" 
+         (dragstart)="dragStart($event, 'stick2')">
+    <img *ngIf="!droppedImages.stick3" src="assets/stick3.png" alt="stick3" 
+         draggable="true" 
+         (dragstart)="dragStart($event, 'stick3')">
   </div>
 
-  <div 
-    class="drop-zone"
-    (dragover)="allowDrop($event)" 
-    (drop)="onDrop($event)">
+  <!-- Drop Zones for each image -->
+  <div class="drop-zone" 
+       (dragover)="allowDrop($event)" 
+       (drop)="onDrop($event, 'stick1')">
+    <h2></h2>
+    <!-- Display the image inside the drop zone after it's dropped -->
+    <img *ngIf="droppedImages.stick1" src="assets/stick1.png" alt="stick1" class="dropped-image">
   </div>
 
+  <div class="drop-zone" 
+       (dragover)="allowDrop($event)" 
+       (drop)="onDrop($event, 'stick2')">
+    <h2></h2>
+    <!-- Display the image inside the drop zone after it's dropped -->
+    <img *ngIf="droppedImages.stick2" src="assets/stick2.png" alt="stick2" class="dropped-image">
+  </div>
+
+  <div class="drop-zone" 
+       (dragover)="allowDrop($event)" 
+       (drop)="onDrop($event, 'stick3')">
+    <h2></h2>
+    <!-- Display the image inside the drop zone after it's dropped -->
+    <img *ngIf="droppedImages.stick3" src="assets/stick3.png" alt="stick3" class="dropped-image">
+  </div>
+
+  <!-- Info container after successful drop -->
   <div class="info-container" *ngIf="showInfo">
     <h1>INFO</h1>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-      Enim placeat, in eum illum totam ullam architecto!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur facilis nemo reprehenderit itaque aut quis, dolorum nisi dolor natus totam, architecto corporis molestiae laudantium quae optio minus culpa voluptatum?
+      Temporibus dolorem dolorum quis nihil fuga, deleniti veniam vitae minus explicabo quia commodi dolor officiis tenetur delectus ab. Provident fugit corrupti tempora at iure dolore aperiam debitis laborum minus excepturi!
+      Modi quo a esse incidunt assumenda dolorem nesciunt quidem velit eligendi quis molestiae quaerat impedit sit veniam non dolore eius adipisci, perferendis eveniet voluptatibus accusantium eos quam. Aliquam, magni dolor?
     </p>
     <ion-button class="nextBtn" (click)="nextPage()">
       <ion-icon name="arrow-forward"></ion-icon>
     </ion-button>
   </div>
+
+  <img *ngIf="showError" src="assets/wrong.png" alt="Error" class="error-image" class="error-image">
+
 </ion-content>
