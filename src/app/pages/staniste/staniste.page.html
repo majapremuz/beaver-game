@@ -1,0 +1,75 @@
+<ion-content [fullscreen]="true">
+    <ion-button (click)="toggleMusic()">
+      <ion-icon *ngIf="backgroundMusic?.paused" name="play"></ion-icon>
+      <ion-icon *ngIf="!backgroundMusic?.paused" name="pause"></ion-icon>
+    </ion-button>
+    
+  
+    <ion-button (click)="toggleImage()" class="toggleBtn">+</ion-button>
+  
+    <!-- Image Container with draggable images -->
+    <div class="img-container" [class.show]="showImage">
+      <img *ngIf="!droppedImages.bow1" src="assets/bow 1.png" alt="bow1" 
+           draggable="true" 
+           (dragstart)="dragStart($event, 'bow1')">
+      <img *ngIf="!droppedImages.bow2" src="assets/bow 2.png" alt="bow2" 
+           draggable="true" 
+           (dragstart)="dragStart($event, 'bow2')">
+      <img *ngIf="!droppedImages.bow3" src="assets/bow 3.png" alt="bow3" 
+           draggable="true" 
+           (dragstart)="dragStart($event, 'bow3')">
+      <img *ngIf="!droppedImages.bow4" src="assets/bow 4.png" alt="bow4" 
+            draggable="true" 
+            (dragstart)="dragStart($event, 'bow4')">
+    </div>
+  
+    <!-- Drop Zones for each image -->
+    <div class="drop-zone drop-zone1" 
+         (dragover)="allowDrop($event)" 
+         (drop)="onDrop($event, 'bow1')">
+      <h2></h2>
+      <!-- Display the image inside the drop zone after it's dropped -->
+      <img *ngIf="droppedImages.bow1" src="assets/bow 1.png" alt="bow 1" class="dropped-image">
+    </div>
+  
+    <div class="drop-zone drop-zone2" 
+         (dragover)="allowDrop($event)" 
+         (drop)="onDrop($event, 'bow2')">
+      <h2></h2>
+      <!-- Display the image inside the drop zone after it's dropped -->
+      <img *ngIf="droppedImages.bow2" src="assets/bow 2.png" alt="bow 2" class="dropped-image">
+    </div>
+  
+    <div class="drop-zone drop-zone3" 
+         (dragover)="allowDrop($event)" 
+         (drop)="onDrop($event, 'bow3')">
+      <h2></h2>
+      <!-- Display the image inside the drop zone after it's dropped -->
+      <img *ngIf="droppedImages.bow3" src="assets/bow 3.png" alt="bow 3" class="dropped-image">
+    </div>
+  
+    <div class="drop-zone drop-zone4" 
+         (dragover)="allowDrop($event)" 
+         (drop)="onDrop($event, 'bow4')">
+      <h2></h2>
+      <!-- Display the image inside the drop zone after it's dropped -->
+      <img *ngIf="droppedImages.bow4" src="assets/bow 4.png" alt="bow 4" class="dropped-image">
+    </div>
+  
+    <!-- Info container after successful drop -->
+    <div class="info-container" *ngIf="showInfo">
+      <h1>INFO</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur facilis nemo reprehenderit itaque aut quis, dolorum nisi dolor natus totam, architecto corporis molestiae laudantium quae optio minus culpa voluptatum?
+        Temporibus dolorem dolorum quis nihil fuga, deleniti veniam vitae minus explicabo quia commodi dolor officiis tenetur delectus ab. Provident fugit corrupti tempora at iure dolore aperiam debitis laborum minus excepturi!
+        Modi quo a esse incidunt assumenda dolorem nesciunt quidem velit eligendi quis molestiae quaerat impedit sit veniam non dolore eius adipisci, perferendis eveniet voluptatibus accusantium eos quam. Aliquam, magni dolor?
+      </p>
+      <ion-button class="nextBtn" (click)="nextPage()">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </div>
+  
+    <img *ngIf="showError" src="assets/wrong.png" alt="Error" class="error-image" class="error-image">
+  
+  </ion-content>
+  

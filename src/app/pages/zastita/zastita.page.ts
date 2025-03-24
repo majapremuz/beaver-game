@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-obitelj',
-  templateUrl: './obitelj.page.html',
-  styleUrls: ['./obitelj.page.scss'],
+  selector: 'app-zastita',
+  templateUrl: './zastita.page.html',
+  styleUrls: ['./zastita.page.scss'],
 })
-export class ObiteljPage implements OnInit {
+export class ZastitaPage implements OnInit {
   showImage = false;
   showInfo = false; 
   showError = false;
@@ -104,6 +104,6 @@ export class ObiteljPage implements OnInit {
   }
 
   nextPage() {
-    this.router.navigate(['/staniste']);
+    this.router.navigate(['/end']);
   }
 }

@@ -17,6 +17,26 @@ const routes: Routes = [
     path: 'obitelj',
     loadChildren: () => import('./pages/obitelj/obitelj.module').then( m => m.ObiteljPageModule)
   },
+  {
+    path: 'staniste',
+    loadChildren: () => import('./pages/staniste/staniste.module').then( m => m.StanistePageModule)
+  },
+  {
+    path: 'gradnja',
+    loadChildren: () => import('./pages//gradnja/gradnja.module').then( m => m.GradnjaPageModule)
+  },
+  {
+    path: 'okolis',
+    loadChildren: () => import('./pages/okolis/okolis.module').then( m => m.OkolisPageModule)
+  },
+  {
+    path: 'zastita',
+    loadChildren: () => import('./pages/zastita/zastita.module').then( m => m.ZastitaPageModule)
+  },
+  {
+    path: 'end',
+    loadChildren: () => import('./pages/end/end.module').then( m => m.EndPageModule)
+  },
 ];
 
 @NgModule({

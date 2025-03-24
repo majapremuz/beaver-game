@@ -16,9 +16,9 @@ ion-card {
   background-color: #a3622a;
   color: white;
   padding: 1.5rem 0;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  position: relative;
+  left: 18%;
+  animation: pulse 3s ease-in-out infinite both;
 }
 
 .card-image {
@@ -28,6 +28,19 @@ ion-card {
   position: relative;
   right: 0.5rem;
 }
+
+@keyframes pulse {
+  0% {
+     transform: scale(1);
+  }
+  50% {
+     transform: scale(0.9);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
 
 p {
   font-size: 1.4rem;
