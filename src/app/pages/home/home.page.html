@@ -1,4 +1,10 @@
 <ion-content class="ion-padding">  
+
+  <ion-button (click)="toggleMusic()" class="musicBtn">
+    <ion-icon *ngIf="backgroundMusic?.paused" name="play"></ion-icon>
+    <ion-icon *ngIf="!backgroundMusic?.paused" name="pause"></ion-icon>
+  </ion-button>
+
   <ion-card (click)="startGame()">
     <ng-container>
       <img src="assets/menu.png" alt="menu icon" class="card-image">
