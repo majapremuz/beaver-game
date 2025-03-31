@@ -246,6 +246,6 @@ export class ObiteljPage implements OnInit {
   }
 
   nextPage() {
-    this.router.navigate(['/end']);
+    this.router.navigate(['/staniste']);
   }
 }

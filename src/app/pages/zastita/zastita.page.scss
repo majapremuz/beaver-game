@@ -1,120 +1,145 @@
 ion-content {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    --background: url("/assets/5 - zastita od dabrova.jpg") no-repeat center center/cover;
-  }
-  
-  .toggleBtn {
-    //width: 15%;
-    //--border-radius: 50%;
-    font-size: 2rem;
-    --background:  #a34a2a;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
-  }
-
-  .nextBtn {
-    font-size: 2rem;
-    --background:  #a34a2a;
-    --color: white;
-  }
-
-
-  .img-container {
-    position: fixed;
-    top: 50%;
-    left: -100%;
-    transform: translateY(-50%);
-    transition: left 0.5s ease-in-out;
-    width: 30%;
-    height: 100%;
-    background-color: #ffffff;
-    padding: 1rem;
-    box-shadow: 0px 0px 31px 9px rgba(0,0,0,0.75);
-    z-index: 999;
-  }
-  
-  .img-container.show {
-    left: 0px;
-  }
-  
-  img {
-    width: 50%;
-    height: auto;
-  }
-
-  .dropped-image {
-    width: 100%;
-  }
-  
-  .drop-zone {
-    height: 20vmin;
-    width: 20vmin;
-    position: fixed;
-    left: 65%;
-    top: 25%;
-    background-color: rgb(210, 206, 206);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .drop-zone.show {
-    right: 0px;
-  }
-
-  .dropped {
-    background-color: transparent;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  --background: url("/assets/5 - zastita od dabrova.jpg") no-repeat center center/cover;
 }
 
-  .drop-zone1 {
-    left: 25vmin;
-    top: 35vmin;
-  }
+.toggleBtn {
+  //width: 15%;
+  //--border-radius: 50%;
+  font-size: 2rem;
+  --background:  #a34a2a;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
 
-  .drop-zone2 {
-    left: 72vmin;
-    top: 20vmin;
-  }
+.musicBtn {
+  --background: #a3622a;
+}
 
-  .drop-zone3 {
-    left: 107vmin;
-    top: 45vmin;
-  }
+.nextBtn {
+  font-size: 2rem;
+  --background:  #a34a2a;
+  --color: white;
+}
 
-  .drop-zone4 {
-    left: 145vmin;
-    top: 18vmin;
-  }
 
-  .info-container {
-    background-color: #8e8f92;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    margin: 1rem auto;
-    padding: 1rem;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%);
-  }
-  
-  .info-container.show {
-    right: 0px;
-  }
+.img-container {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  transform: translateY(-50%);
+  transition: left 0.5s ease-in-out;
+  width: 30%;
+  height: 100%;
+  background-color: #ffffff;
+  padding: 1rem;
+  box-shadow: 0px 0px 31px 9px rgba(0,0,0,0.75);
+  z-index: 999;
+}
 
-  .error-image {
-    height: 20vmin;
-    width: 20vmin;
-    position: absolute;
-    left: 50%;
-    top: 0;
-  }
+.img-container.show {
+  left: 0px;
+}
+
+img {
+  width: 50%;
+  height: auto;
+  touch-action: none;
+  transition: opacity 0.2s ease;
+}
+
+img[data-dragging] {
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.dropped-image {
+  width: 100%;
+}
+
+.drop-zone {
+  height: 20vmin;
+  width: 20vmin;
+  position: fixed;
+  left: 65%;
+  top: 25%;
+  background-color: rgb(210, 206, 206);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*.drop-zone.show {
+  right: 0px;
+}*/
+
+.drop-zone.highlight {
+  border: 2px dashed #4caf50;
+}
+
+.drop-zone.show {
+  left: auto;
+  right: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+
+.dropped {
+  background-color: transparent;
+}
+
+.drop-zone1 {
+  left: 25vmin;
+  top: 35vmin;
+}
+
+.drop-zone2 {
+  left: 72vmin;
+  top: 20vmin;
+}
+
+.drop-zone3 {
+  left: 107vmin;
+  top: 45vmin;
+}
+
+.drop-zone4 {
+  left: 145vmin;
+  top: 18vmin;
+}
+
+.info-container {
+  background-color: #8e8f92;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 1rem auto;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.info-container.show {
+  right: 0px;
+}
+
+.error-image {
+  height: 20vmin;
+  width: 20vmin;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
