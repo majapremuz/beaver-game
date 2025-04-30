@@ -3,27 +3,49 @@ ion-content {
   margin: 0;
   height: 100%;
   width: 100%;
-  --background: url("/assets/home screen.jpg") no-repeat center center/cover;
+  --background: url("/assets/home screen.jpg") no-repeat center/100% 100%;
 }
 
 .musicBtn {
   --background: #a3622a;
 }
 
+h1 {
+  font-size: 5.5rem;
+  font-family: "Bagel Fat One", system-ui;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+  position: relative;
+  top: -15%;
+  background: linear-gradient(0deg, rgba(103, 51, 4, 1) 0%, rgba(161, 96, 40, 1) 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 5px white;
+  letter-spacing: -4px;
+}
+
 ion-card {
   width: 60%;
   height: 10vmin;
-  margin: 0.5rem 0;
+  margin: 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: #a3622a;
+  background: white;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 3px #93dce8;
+  box-shadow: none;
   color: white;
+  font-family: "Bagel Fat One", system-ui;
+  letter-spacing: 2px;
   padding: 1.5rem 0;
   position: relative;
-  left: 18%;
-  animation: pulse 3s ease-in-out infinite both;
-}
+  left: 40%;
+  top: 40%;}
 
 .card-image {
   width: 10%;
@@ -47,8 +69,11 @@ ion-card {
 
 
 p {
-  font-size: 1.4rem;
+  font-size: 3rem;
   text-indent: 0.8rem;
   position: relative;
   top: 3px;
+  font-weight: bold;
+  animation: pulse 3s ease-in-out infinite both;
+
 }

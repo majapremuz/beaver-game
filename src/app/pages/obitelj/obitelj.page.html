@@ -5,55 +5,66 @@
   </ion-button>
   
 
-  <ion-button (click)="toggleImage()" class="toggleBtn">+</ion-button>
+  <ion-button (click)="toggleImage()" class="toggleBtn">
+    <p class="toggleBtnText">KLIKNI</p>
+  </ion-button>
 
   <!-- Image Container with draggable images -->
   <div id="img-container" class="img-container" [class.show]="showImage">
-    <img *ngIf="!droppedImages.bow1" src="assets/bow 1.png" alt="bow1" 
-          id="bow1" 
-          (touchstart)="touchStart($event, 'bow1')"
+    <img *ngIf="!droppedImages.dabar1" src="assets/dabar 1.png" alt="dabar1" 
+          id="dabar1" 
+          class="draggable-img"
+          (touchstart)="touchStart($event, 'dabar1')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow1')">
-    <img *ngIf="!droppedImages.bow2" src="assets/bow 2.png" alt="bow2"
-          id="bow2" 
-         (touchstart)="touchStart($event, 'bow2')"
+          (touchend)="touchEnd($event, 'dabar1')">
+    <img *ngIf="!droppedImages.dabar2" src="assets/dabar 2.png" alt="dabar2"
+          id="dabar2" 
+          class="draggable-img"
+         (touchstart)="touchStart($event, 'dabar2')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow2')">
-    <img *ngIf="!droppedImages.bow3" src="assets/bow 3.png" alt="bow3"
-          id="bow3" 
-         (touchstart)="touchStart($event, 'bow3')"
+          (touchend)="touchEnd($event, 'dabar2')">
+    <img *ngIf="!droppedImages.dabar3" src="assets/dabar 3.png" alt="dabar3"
+          id="dabar3"
+          class="draggable-img" 
+         (touchstart)="touchStart($event, 'dabar3')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow3')">
-    <img *ngIf="!droppedImages.bow4" src="assets/bow 4.png" alt="bow4"
-          id="bow4" 
-          (touchstart)="touchStart($event, 'bow4')"
+          (touchend)="touchEnd($event, 'dabar3')">
+    <img *ngIf="!droppedImages.dabar4" src="assets/dabar 4.png" alt="dabar4"
+          id="dabar4"
+          class="draggable-img" 
+          (touchstart)="touchStart($event, 'dabar4')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow4')">
+          (touchend)="touchEnd($event, 'dabar4')">
   </div>
 
   <!-- Drop Zones -->
-<div id="bow1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'bow1')">
-  <img *ngIf="droppedImages.bow1" src="assets/bow 1.png" alt="bow 1" class="dropped-image">
+<div id="dabar1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'dabar1')">
+  <img *ngIf="droppedImages.dabar1" src="assets/dabar 1.png" alt="dabar 1" class="dropped-image">
 </div>
-<div id="bow2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'bow2')">
-  <img *ngIf="droppedImages.bow2" src="assets/bow 2.png" alt="bow 2" class="dropped-image">
+<div id="dabar2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'dabar2')">
+  <img *ngIf="droppedImages.dabar2" src="assets/dabar 2.png" alt="dabar 2" class="dropped-image">
 </div>
-<div id="bow3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'bow3')">
-  <img *ngIf="droppedImages.bow3" src="assets/bow 3.png" alt="bow 3" class="dropped-image">
+<div id="dabar3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'dabar3')">
+  <img *ngIf="droppedImages.dabar3" src="assets/dabar 3.png" alt="dabar 3" class="dropped-image">
 </div>
-<div id="bow4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'bow4')">
-  <img *ngIf="droppedImages.bow4" src="assets/bow 4.png" alt="bow 4" class="dropped-image">
+<div id="dabar4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'dabar4')">
+  <img *ngIf="droppedImages.dabar4" src="assets/dabar 4.png" alt="dabar 4" class="dropped-image">
 </div>
 
   <!-- Info container after successful drop -->
   <div class="info-container" *ngIf="showInfo">
     <h1>INFO</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur facilis nemo reprehenderit itaque aut quis, dolorum nisi dolor natus totam, architecto corporis molestiae laudantium quae optio minus culpa voluptatum?
-    </p>
-    <ion-button class="nextBtn" (click)="nextPage()">
-      <ion-icon name="arrow-forward"></ion-icon>
-    </ion-button>
+    <div class="info-text">
+      <p>
+        Dabrovi (lat. Castor) rod su vodenih i kopnenih životinja iz porodice Castoridae. Najveći su glodavci sjeverne polutke.
+        Masivne su i zdepaste građe, izvrsni plivači i ronioci. Duljina tijela dosegne 1 metar, visina u hrptu je do 30 cm, a rep je širok i plosnat 
+        duljine do 30 cm. Masa odrasle jedinke 20 je do 30 kg. Boja dlake je tamnokestenjasta do sivkasta, na trbuhu je svjetlija dlaka.
+      </p>
+      <ion-button class="nextBtn" (click)="nextPage()">
+        <p class="nextBtnText">NASTAVI</p>
+      </ion-button>
+    </div>
+    
   </div>
 
  <!---<img *ngIf="showError" src="assets/wrong.png" alt="Error" class="error-image" class="error-image">-->

@@ -18,10 +18,10 @@ export class ObiteljPage implements OnInit {
 
   // State to track if images have been dropped correctly
   droppedImages = { 
-    bow1: false,
-    bow2: false, 
-    bow3: false,
-    bow4: false, 
+    dabar1: false,
+    dabar2: false, 
+    dabar3: false,
+    dabar4: false, 
   };
 
   constructor(private router: Router) {}
@@ -44,10 +44,10 @@ export class ObiteljPage implements OnInit {
     this.showError = false;
   
     this.droppedImages = {
-      bow1: false,
-      bow2: false,
-      bow3: false,
-      bow4: false
+      dabar1: false,
+      dabar2: false,
+      dabar3: false,
+      dabar4: false
     };
   
     document.querySelectorAll('.drop-zone').forEach(zone => {
@@ -58,7 +58,7 @@ export class ObiteljPage implements OnInit {
   startBackgroundMusic() {
     if (this.backgroundMusic) {
       this.backgroundMusic.pause();
-      this.backgroundMusic.currentTime = 0; // Restart from beginning
+      this.backgroundMusic.currentTime = 0;
     } else {
       this.backgroundMusic = new Audio('assets/sounds/spring-time-lofi.mp3');
     }
