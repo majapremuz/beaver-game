@@ -1,145 +1,189 @@
 ion-content {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  --background: url("/assets/3 - gradnja stanista.jpg") no-repeat center center/cover;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    --background: url("/assets/3 - gradnja stanista.jpg") no-repeat center center/100% 100%;  
+    --overflow: hidden;
+  }
+
+  img {
+    max-width: none;
+  }
+
+
+  .toggleBtn {
+    font-size: 2rem;
+    --background:  transparent;
+    --box-shadow: none;
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+
+  .musicBtn {
+    --background: #93dce8;
+  }
+
+  .nextBtn {
+    --background: transparent;
+    --box-shadow: none;
+    display: flex;
+    height: 15vmin;
+  }
+
+
+  .img-container {
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    transform: translateY(-50%);
+    transition: left 0.5s ease-in-out;
+    width: 20%;
+    height: 100vh;
+    object-fit: contain;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-right: 10px solid #95dbe8;
+    padding: 1rem;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: none;
+  }
+  
+  .img-container.show {
+    left: 0px;
+  }
+  
+  .img-container img {
+    //width: 100vmin;
+    //height: 100%;
+    touch-action: none;
+    transition: opacity 0.2s ease;
+  }
+
+  img[data-dragging] {
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .draggable-img {
+    width: 25vmin;
+    height: 25vmin;
+  }
+
+  .dropped-image-1 {
+    height: 63vmin;
+    z-index: -999;
+    position: absolute;
+  }
+  
+  .drop-zone {
+    height: 20vmin;
+    width: 20vmin;
+    position: relative;
+    left: 65%;
+    top: 25%;
+    background-color: rgba(210, 206, 206, 0.552);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .drop-zone.highlight {
+    border: 2px dashed #4caf50;
+  }
+
+  .drop-zone.show {
+    left: auto;
+    right: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
 }
 
-.toggleBtn {
-  //width: 15%;
-  //--border-radius: 50%;
-  font-size: 2rem;
-  --background:  #a34a2a;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0%);
+
+  .dropped {
+    background-color: transparent;
 }
 
-.musicBtn {
-  --background: #a3622a;
-}
+  .drop-zone1 {
+    left: 48%;
+    top: 19%;
+  }
 
-.nextBtn {
-  font-size: 2rem;
-  --background:  #a34a2a;
-  --color: white;
-}
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    max-height: 105vmin;
+  }
 
+  .info-text {
+    background-color: white;
+    border: 10px solid #95dbe8;
+    padding: 1rem;
+    line-height: 1.5;
+    max-height: 90vmin;
+    overflow-y: auto;
+  }
 
-.img-container {
-  position: absolute;
-  top: 50%;
-  left: -100%;
-  transform: translateY(-50%);
-  transition: left 0.5s ease-in-out;
-  width: 30%;
-  height: 100%;
-  background-color: #ffffff;
-  padding: 1rem;
-  box-shadow: 0px 0px 31px 9px rgba(0,0,0,0.75);
-  z-index: 999;
-}
+  h1 {
+    color: white;
+    font-family: "Bagel Fat One", system-ui;
+    font-size: 3rem;
+    text-shadow: 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8;
+  }
 
-.img-container.show {
-  left: 0px;
-}
+  p {
+    font-size: 0.8rem;
+    color: rgb(46, 46, 46);
+    line-height: 1.5;
+  }
 
-img {
-  width: 50%;
-  height: auto;
-  touch-action: none;
-  transition: opacity 0.2s ease;
-}
+  .nextBtnText,
+  .toggleBtnText {
+    color: white;
+    font-family: "Bagel Fat One", system-ui;
+    text-shadow: 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8;
+    font-size: 3rem;
+  }
+  
+  .info-container.show {
+    right: 0px;
+  }
 
-img[data-dragging] {
-  z-index: 1000;
-  pointer-events: none;
-}
-
-.dropped-image {
-  width: 100%;
-}
-
-.drop-zone {
-  height: 20vmin;
-  width: 20vmin;
-  position: fixed;
-  left: 65%;
-  top: 25%;
-  background-color: rgb(210, 206, 206);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/*.drop-zone.show {
-  right: 0px;
-}*/
-
-.drop-zone.highlight {
-  border: 2px dashed #4caf50;
-}
-
-.drop-zone.show {
-  left: auto;
-  right: auto;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 1000;
-}
-
-
-.dropped {
-  background-color: transparent;
-}
-
-.drop-zone1 {
-  left: 25vmin;
-  top: 35vmin;
-}
-
-.drop-zone2 {
-  left: 72vmin;
-  top: 20vmin;
-}
-
-.drop-zone3 {
-  left: 107vmin;
-  top: 45vmin;
-}
-
-.drop-zone4 {
-  left: 145vmin;
-  top: 18vmin;
-}
-
-.info-container {
-  background-color: #8e8f92;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  margin: 1rem auto;
-  padding: 1rem;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%);
-}
-
-.info-container.show {
-  right: 0px;
-}
-
-.error-image {
-  height: 20vmin;
-  width: 20vmin;
-  position: absolute;
-  left: 50%;
-  top: 0;
-}
+  .error-image {
+    height: 20vmin;
+    width: 20vmin;
+    position: absolute;
+    left: 50%;
+    top: 0;
+  }

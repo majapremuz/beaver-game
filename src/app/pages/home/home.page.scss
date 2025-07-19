@@ -1,4 +1,5 @@
 ion-content {
+  overflow: hidden;
   padding: 0;
   margin: 0;
   height: 100%;
@@ -7,7 +8,7 @@ ion-content {
 }
 
 .musicBtn {
-  --background: #a3622a;
+  --background: #93dce8;
 }
 
 h1 {
@@ -24,6 +25,7 @@ h1 {
   background-clip: text;
   -webkit-text-stroke: 5px white;
   letter-spacing: -4px;
+  margin: 0 3rem;
 }
 
 ion-card {
@@ -34,8 +36,6 @@ ion-card {
   justify-content: flex-start;
   align-items: center;
   background: white;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-stroke: 3px #93dce8;
   box-shadow: none;
@@ -44,8 +44,9 @@ ion-card {
   letter-spacing: 2px;
   padding: 1.5rem 0;
   position: relative;
-  left: 40%;
-  top: 40%;}
+  left: 85vmin;
+  top: 35vmin;
+}
 
 .card-image {
   width: 10%;
@@ -75,5 +76,48 @@ p {
   top: 3px;
   font-weight: bold;
   animation: pulse 3s ease-in-out infinite both;
-
+  color: white;
+    font-family: "Bagel Fat One", system-ui;
+    text-shadow: 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8, 
+    0px 0px 10px #93dce8;
+    font-size: 3rem;
 }
+
+//media querries
+@media (max-width: 770px) {
+  ion-card {
+    left: 38%;
+    top: 29%;
+  }
+}
+
+@media (max-width: 810px) {
+  ion-card {
+    left: 38%;
+    top: 29%;
+  }
+}
+
+@media (max-width: 855px) {
+  ion-card {
+    left: 35%;
+  }
+}
+
+@media (min-width: 1080px) {
+  h1 {
+    top: 0%;
+    font-size: 8rem;
+  }
+  ion-card {
+    left: 40%;
+    top: 60%;
+  }
+}
+

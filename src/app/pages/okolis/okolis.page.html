@@ -5,55 +5,38 @@
   </ion-button>
   
 
-  <ion-button (click)="toggleImage()" class="toggleBtn">+</ion-button>
+  <ion-button (click)="toggleImage()" class="toggleBtn">
+    <p class="toggleBtnText">KLIKNI</p>
+  </ion-button>
 
   <!-- Image Container with draggable images -->
   <div id="img-container" class="img-container" [class.show]="showImage">
-    <img *ngIf="!droppedImages.bow1" src="assets/bow 1.png" alt="bow1" 
-          id="bow1" 
-          (touchstart)="touchStart($event, 'bow1')"
+    <img *ngIf="!droppedImages.drvo" src="assets/drvo.png" alt="drvo" 
+          id="drvo" 
+          class="draggable-img"
+          (touchstart)="touchStart($event, 'drvo')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow1')">
-    <img *ngIf="!droppedImages.bow2" src="assets/bow 2.png" alt="bow2"
-          id="bow2" 
-         (touchstart)="touchStart($event, 'bow2')"
-          (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow2')">
-    <img *ngIf="!droppedImages.bow3" src="assets/bow 3.png" alt="bow3"
-          id="bow3" 
-         (touchstart)="touchStart($event, 'bow3')"
-          (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow3')">
-    <img *ngIf="!droppedImages.bow4" src="assets/bow 4.png" alt="bow4"
-          id="bow4" 
-          (touchstart)="touchStart($event, 'bow4')"
-          (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow4')">
+          (touchend)="touchEnd($event, 'drvo')">
   </div>
 
   <!-- Drop Zones -->
-<div id="bow1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'bow1')">
-  <img *ngIf="droppedImages.bow1" src="assets/bow 1.png" alt="bow 1" class="dropped-image">
-</div>
-<div id="bow2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'bow2')">
-  <img *ngIf="droppedImages.bow2" src="assets/bow 2.png" alt="bow 2" class="dropped-image">
-</div>
-<div id="bow3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'bow3')">
-  <img *ngIf="droppedImages.bow3" src="assets/bow 3.png" alt="bow 3" class="dropped-image">
-</div>
-<div id="bow4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'bow4')">
-  <img *ngIf="droppedImages.bow4" src="assets/bow 4.png" alt="bow 4" class="dropped-image">
+<div id="drop-drvo" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'drvo')">
+  <img *ngIf="droppedImages.drvo" src="assets/drvo.png" alt="drvo" class="dropped-image-1">
 </div>
 
   <!-- Info container after successful drop -->
   <div class="info-container" *ngIf="showInfo">
     <h1>INFO</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur facilis nemo reprehenderit itaque aut quis, dolorum nisi dolor natus totam, architecto corporis molestiae laudantium quae optio minus culpa voluptatum?
-    </p>
-    <ion-button class="nextBtn" (click)="nextPage()">
-      <ion-icon name="arrow-forward"></ion-icon>
-    </ion-button>
+    <div class="info-text">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quam repudiandae consequatur iure nobis voluptatum, repellat temporibus vitae dolore voluptas quis magni totam aperiam placeat. Cumque nobis sapiente facilis quae!
+        Adipisci, voluptatum labore dicta fugiat libero excepturi provident voluptas error omnis vitae voluptatibus impedit tenetur laboriosam tempore aperiam, sed similique repellat quidem. Laborum alias itaque non minus cupiditate eos sequi.
+      </p>
+      <ion-button class="nextBtn" (click)="nextPage()">
+        <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
+      </ion-button>
+    </div>
+    
   </div>
 
  <!---<img *ngIf="showError" src="assets/wrong.png" alt="Error" class="error-image" class="error-image">-->

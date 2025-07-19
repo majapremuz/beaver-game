@@ -6,15 +6,13 @@ ion-content {
     --background: url("/assets/obitelj-prazno.png") no-repeat center center/100% 100%;  
     --overflow: hidden;
   }
-  
+
   img {
     max-width: none;
   }
 
 
   .toggleBtn {
-    //width: 15%;
-    //--border-radius: 50%;
     font-size: 2rem;
     --background:  transparent;
     --box-shadow: none;
@@ -80,7 +78,6 @@ ion-content {
 
   .dropped-image {
     height: 40vmin;
-
   }
   
   .drop-zone {
@@ -114,23 +111,23 @@ ion-content {
 }
 
   .drop-zone1 {
-    left: 60vmin;
-    top: 55vmin;
+    left: 25%;
+    top: 55%;
   }
 
   .drop-zone2 {
-    left: 85vmin;
-    top: 60vmin;
+    left: 40%;
+    top: 60%;
   }
 
   .drop-zone3 {
-    left: 110vmin;
-    top: 55vmin;
+    left: 52%;
+    top: 55%;
   }
 
   .drop-zone4 {
-    left: 140vmin;
-    top: 60vmin;
+    left: 65%;
+    top: 60%;
   }
 
   .info-container {
@@ -144,7 +141,8 @@ ion-content {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%, -10%);
+    max-height: 105vmin;
   }
 
   .info-text {
@@ -152,6 +150,8 @@ ion-content {
     border: 10px solid #95dbe8;
     padding: 1rem;
     line-height: 1.5;
+    max-height: 90vmin;
+    overflow-y: auto;
   }
 
   h1 {
@@ -169,7 +169,7 @@ ion-content {
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: rgb(46, 46, 46);
     line-height: 1.5;
   }
@@ -199,4 +199,183 @@ ion-content {
     position: absolute;
     left: 50%;
     top: 0;
+  }
+
+  //media queries
+  @media (max-width: 650px) {
+    .dropped-image {
+      height: 35vmin;
+    }
+
+    .drop-zone1 {
+      left: 40vmin;
+      top: 58vmin;
+    } 
+    
+    .drop-zone2 {
+      left: 65vmin;
+      top: 58vmin;
+    }
+  
+    .drop-zone3 {
+      left: 88vmin;
+      top: 55vmin;
+    }
+  
+    .drop-zone4 {
+      left: 110vmin;
+      top: 55vmin;
+    }
+  }
+
+  @media (min-width: 812px) and (max-width: 820px) {
+    .dropped-image {
+      height: 30vmin;
+    }
+
+    .drop-zone1 {
+      top: 58vmin;
+    } 
+    
+    .drop-zone2 {
+      top: 60vmin;
+    }
+  
+    .drop-zone3 {
+      top: 55vmin;
+    }
+  
+    .drop-zone4 {
+      top: 57vmin;
+    }
+
+    .toggleBtn {
+      position: absolute;
+      bottom: -18%;
+    }
+  }
+
+  @media (min-width: 667px) and (max-width: 677px) {
+    .dropped-image {
+      height: 30vmin;
+    }
+
+    .drop-zone1 {
+      left: 48vmin;
+      top: 58vmin;
+    } 
+    
+    .drop-zone2 {
+      left: 67vmin;
+      top: 60vmin;
+    }
+  
+    .drop-zone3 {
+      left: 85vmin;
+      top: 55vmin;
+    }
+  
+    .drop-zone4 {
+      left: 115vmin;
+      top: 57vmin;
+    }
+
+    .toggleBtn {
+      position: absolute;
+      bottom: -18%;
+    }
+  }
+
+  @media (min-width: 1080px) and (max-width: 1090px) {
+    .dropped-image {
+      height: 30vmin;
+    }
+
+    .drop-zone1 {
+      left: 28vmin;
+      top: 58vmin;
+    } 
+    
+    .drop-zone2 {
+      left: 48vmin;
+      top: 60vmin;
+    }
+  
+    .drop-zone3 {
+      left: 66vmin;
+      top: 55vmin;
+    }
+  
+    .drop-zone4 {
+      left: 83vmin;
+      top: 57vmin;
+    }
+
+    .toggleBtn {
+      position: absolute;
+      bottom: -5%;
+    }
+  }
+
+  @media (min-width: 1280px) and (max-width: 1290px) {
+    .dropped-image {
+      height: 30vmin;
+    }
+
+    .drop-zone1 {
+      left: 40vmin;
+      top: 58vmin;
+    } 
+    
+    .drop-zone2 {
+      left: 60vmin;
+      top: 60vmin;
+    }
+  
+    .drop-zone3 {
+      left: 77vmin;
+      top: 55vmin;
+    }
+  
+    .drop-zone4 {
+      left: 102vmin;
+      top: 57vmin;
+    }
+
+    .toggleBtn {
+      position: absolute;
+      bottom: -5%;
+    }
+  }
+
+  @media (min-width: 1366px) and (max-width: 1376px) {
+    .dropped-image {
+      height: 30vmin;
+    }
+
+    .drop-zone1 {
+      left: 28vmin;
+      top: 58vmin;
+    } 
+    
+    .drop-zone2 {
+      left: 48vmin;
+      top: 60vmin;
+    }
+  
+    .drop-zone3 {
+      left: 66vmin;
+      top: 55vmin;
+    }
+  
+    .drop-zone4 {
+      left: 83vmin;
+      top: 57vmin;
+    }
+
+    .toggleBtn {
+      position: absolute;
+      bottom: -5%;
+      left: 45%;
+    }
   }

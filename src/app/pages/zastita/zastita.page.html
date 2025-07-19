@@ -5,55 +5,83 @@
   </ion-button>
   
 
-  <ion-button (click)="toggleImage()" class="toggleBtn">+</ion-button>
+  <ion-button (click)="toggleImage()" class="toggleBtn">
+    <p class="toggleBtnText">KLIKNI</p>
+  </ion-button>
 
   <!-- Image Container with draggable images -->
   <div id="img-container" class="img-container" [class.show]="showImage">
-    <img *ngIf="!droppedImages.bow1" src="assets/bow 1.png" alt="bow1" 
-          id="bow1" 
-          (touchstart)="touchStart($event, 'bow1')"
+    <img *ngIf="!droppedImages.mreza1" src="assets/mreza 1.png" alt="mreza1" 
+          id="mreza1" 
+          class="draggable-img"
+          (touchstart)="touchStart($event, 'mreza1')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow1')">
-    <img *ngIf="!droppedImages.bow2" src="assets/bow 2.png" alt="bow2"
-          id="bow2" 
-         (touchstart)="touchStart($event, 'bow2')"
+          (touchend)="touchEnd($event, 'mreza1')">
+    <img *ngIf="!droppedImages.mreza2" src="assets/mreza 2.png" alt="mreza2"
+          id="mreza2" 
+          class="draggable-img"
+          (touchstart)="touchStart($event, 'mreza2')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow2')">
-    <img *ngIf="!droppedImages.bow3" src="assets/bow 3.png" alt="bow3"
-          id="bow3" 
-         (touchstart)="touchStart($event, 'bow3')"
+          (touchend)="touchEnd($event, 'mreza2')">
+    <img *ngIf="!droppedImages.mreza3" src="assets/mreza 3.png" alt="mreza3"
+          id="mreza3"
+          class="draggable-img" 
+          (touchstart)="touchStart($event, 'mreza3')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow3')">
-    <img *ngIf="!droppedImages.bow4" src="assets/bow 4.png" alt="bow4"
-          id="bow4" 
-          (touchstart)="touchStart($event, 'bow4')"
+          (touchend)="touchEnd($event, 'mreza3')">
+    <img *ngIf="!droppedImages.mreza4" src="assets/mreza 4.png" alt="mreza4"
+          id="mreza4"
+          class="draggable-img" 
+          (touchstart)="touchStart($event, 'mreza4')"
           (touchmove)="touchMove($event)"
-          (touchend)="touchEnd($event, 'bow4')">
+          (touchend)="touchEnd($event, 'mreza4')">
+    <img *ngIf="!droppedImages.mreza5" src="assets/mreza 5.png" alt="mreza5"
+          id="mreza5"
+          class="draggable-img" 
+          (touchstart)="touchStart($event, 'mreza5')"
+          (touchmove)="touchMove($event)"
+          (touchend)="touchEnd($event, 'mreza5')">
+    <img *ngIf="!droppedImages.mreza6" src="assets/mreza 6.png" alt="mreza6"
+          id="mreza6"
+          class="draggable-img" 
+          (touchstart)="touchStart($event, 'mreza6')"
+          (touchmove)="touchMove($event)"
+          (touchend)="touchEnd($event, 'mreza6')">
   </div>
 
   <!-- Drop Zones -->
-<div id="bow1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'bow1')">
-  <img *ngIf="droppedImages.bow1" src="assets/bow 1.png" alt="bow 1" class="dropped-image">
+<div id="drop-mreza1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'mreza1')">
+  <img *ngIf="droppedImages.mreza1" src="assets/mreza 1.png" alt="mreza 1" class="dropped-image-1">
 </div>
-<div id="bow2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'bow2')">
-  <img *ngIf="droppedImages.bow2" src="assets/bow 2.png" alt="bow 2" class="dropped-image">
+<div id="drop-mreza2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'mreza2')">
+  <img *ngIf="droppedImages.mreza2" src="assets/mreza 2.png" alt="mreza 2" class="dropped-image-2">
 </div>
-<div id="bow3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'bow3')">
-  <img *ngIf="droppedImages.bow3" src="assets/bow 3.png" alt="bow 3" class="dropped-image">
+<div id="drop-mreza3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'mreza3')">
+  <img *ngIf="droppedImages.mreza3" src="assets/mreza 3.png" alt="mreza 3" class="dropped-image-3">
 </div>
-<div id="bow4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'bow4')">
-  <img *ngIf="droppedImages.bow4" src="assets/bow 4.png" alt="bow 4" class="dropped-image">
+<div id="drop-mreza4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'mreza4')">
+  <img *ngIf="droppedImages.mreza4" src="assets/mreza 4.png" alt="mreza 4" class="dropped-image-4">
+</div>
+<div id="drop-mreza5" class="drop-zone drop-zone5" (touchend)="touchEnd($event, 'mreza5')">
+  <img *ngIf="droppedImages.mreza5" src="assets/mreza 5.png" alt="mreza 5" class="dropped-image-5">
+</div>
+<div id="drop-mreza6" class="drop-zone drop-zone6" (touchend)="touchEnd($event, 'mreza6')">
+  <img *ngIf="droppedImages.mreza6" src="assets/mreza 6.png" alt="mreza 6" class="dropped-image-6">
 </div>
 
   <!-- Info container after successful drop -->
   <div class="info-container" *ngIf="showInfo">
     <h1>INFO</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium consequatur facilis nemo reprehenderit itaque aut quis, dolorum nisi dolor natus totam, architecto corporis molestiae laudantium quae optio minus culpa voluptatum?
-    </p>
-    <ion-button class="nextBtn" (click)="nextPage()">
-      <ion-icon name="arrow-forward"></ion-icon>
-    </ion-button>
+    <div class="info-text">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quam repudiandae consequatur iure nobis voluptatum, repellat temporibus vitae dolore voluptas quis magni totam aperiam placeat. Cumque nobis sapiente facilis quae!
+        Adipisci, voluptatum labore dicta fugiat libero excepturi provident voluptas error omnis vitae voluptatibus impedit tenetur laboriosam tempore aperiam, sed similique repellat quidem. Laborum alias itaque non minus cupiditate eos sequi.
+      </p>
+      <ion-button class="nextBtn" (click)="nextPage()">
+        <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
+      </ion-button>
+    </div>
+    
   </div>
 
  <!---<img *ngIf="showError" src="assets/wrong.png" alt="Error" class="error-image" class="error-image">-->

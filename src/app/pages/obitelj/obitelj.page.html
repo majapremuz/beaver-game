@@ -38,16 +38,16 @@
   </div>
 
   <!-- Drop Zones -->
-<div id="dabar1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'dabar1')">
+<div id="drop-dabar1" class="drop-zone drop-zone1" (touchend)="touchEnd($event, 'dabar1')">
   <img *ngIf="droppedImages.dabar1" src="assets/dabar 1.png" alt="dabar 1" class="dropped-image">
 </div>
-<div id="dabar2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'dabar2')">
+<div id="drop-dabar2" class="drop-zone drop-zone2" (touchend)="touchEnd($event, 'dabar2')">
   <img *ngIf="droppedImages.dabar2" src="assets/dabar 2.png" alt="dabar 2" class="dropped-image">
 </div>
-<div id="dabar3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'dabar3')">
+<div id="drop-dabar3" class="drop-zone drop-zone3" (touchend)="touchEnd($event, 'dabar3')">
   <img *ngIf="droppedImages.dabar3" src="assets/dabar 3.png" alt="dabar 3" class="dropped-image">
 </div>
-<div id="dabar4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'dabar4')">
+<div id="drop-dabar4" class="drop-zone drop-zone4" (touchend)="touchEnd($event, 'dabar4')">
   <img *ngIf="droppedImages.dabar4" src="assets/dabar 4.png" alt="dabar 4" class="dropped-image">
 </div>
 
@@ -61,7 +61,7 @@
         duljine do 30 cm. Masa odrasle jedinke 20 je do 30 kg. Boja dlake je tamnokestenjasta do sivkasta, na trbuhu je svjetlija dlaka.
       </p>
       <ion-button class="nextBtn" (click)="nextPage()">
-        <p class="nextBtnText">NASTAVI</p>
+        <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
       </ion-button>
     </div>
     

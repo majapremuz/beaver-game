@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { ChangeDetectorRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-obitelj',
   templateUrl: './obitelj.page.html',
   styleUrls: ['./obitelj.page.scss'],
 })
-export class ObiteljPage implements OnInit {
+export class ObiteljPage implements OnInit, OnDestroy {
   showImage = false;
   showInfo = false; 
   showError = false;
@@ -14,6 +17,7 @@ export class ObiteljPage implements OnInit {
   private isDragging = false;
   private startX = 0;
   private startY = 0;
+  private backButtonSub!: Subscription;
 
 
   // State to track if images have been dropped correctly
@@ -21,13 +25,26 @@ export class ObiteljPage implements OnInit {
     dabar1: false,
     dabar2: false, 
     dabar3: false,
-    dabar4: false, 
+    dabar4: false
   };
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private platform: Platform,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.startBackgroundMusic();
+    this.backButtonSub = this.platform.backButton.subscribeWithPriority(9999, () => {
+      console.log('Back button disabled');
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.backButtonSub) {
+      this.backButtonSub.unsubscribe();
+    }
   }
 
   ionViewWillEnter() {
@@ -56,19 +73,19 @@ export class ObiteljPage implements OnInit {
   }
 
   startBackgroundMusic() {
-    if (this.backgroundMusic) {
-      this.backgroundMusic.pause();
-      this.backgroundMusic.currentTime = 0;
-    } else {
-      this.backgroundMusic = new Audio('assets/sounds/spring-time-lofi.mp3');
-    }
-  
-    this.backgroundMusic.loop = true;
-    this.backgroundMusic.volume = 0.5;
-    this.backgroundMusic.play().catch(error => {
-      console.error('Error playing background music:', error);
-    });
+  if (this.backgroundMusic) {
+    this.backgroundMusic.pause();
+    this.backgroundMusic.currentTime = 0;
   }
+
+  this.backgroundMusic = new Audio('assets/sounds/spring-time-lofi.mp3');
+  this.backgroundMusic.loop = true;
+  this.backgroundMusic.volume = 0.5;
+  this.backgroundMusic.play().catch(error => {
+    console.error('Error playing background music:', error);
+  });
+}
+
 
   stopBackgroundMusic() {
     if (this.backgroundMusic) {
@@ -90,27 +107,39 @@ export class ObiteljPage implements OnInit {
   }
   
   toggleImage() {
-    this.showImage = !this.showImage;
-  }
+  this.showImage = !this.showImage;
+}
 
   // Start the drag operation and store the imageId
   touchStart(event: TouchEvent, imageId: string) {
-    const touch = event.touches[0];
-    if (touch) {
-      event.preventDefault();
-      this.startX = touch.clientX;
-      this.startY = touch.clientY;
-      this.isDragging = false; 
-      const target = event.target as HTMLElement;
-      target.setAttribute('data-dragging', imageId);
-      target.style.opacity = '0.5';
-    }
+    console.log('TOUCH START TRIGGERED ON obitelj:', imageId);
+  const touch = event.touches[0];
+  if (touch) {
+    event.preventDefault();
+    this.startX = touch.clientX;
+    this.startY = touch.clientY;
+    this.isDragging = false;
+
+    const target = event.target as HTMLElement;
+    target.setAttribute('data-dragging', imageId);
+    target.style.opacity = '0.5';
+
+    console.log(event.target, "target touchStart obitelj");
+
+    // Store original parent and position
+    target.setAttribute('data-original-left', target.offsetLeft.toString());
+    target.setAttribute('data-original-top', target.offsetTop.toString());
+    target.setAttribute('data-original-parent-id', target.parentElement?.id || '');
   }
+}
+
   
   touchEnd(event: TouchEvent, targetId: string) {
     const draggingElement = document.querySelector('[data-dragging]') as HTMLElement;
     const draggedImageId = draggingElement?.getAttribute('data-dragging');
-  
+
+    console.log("draggedImageId obitelj: ", draggedImageId);
+
     if (!draggedImageId || !this.isDragging) {
       // If not dragging, reset and exit
       if (draggingElement) {
@@ -126,7 +155,8 @@ export class ObiteljPage implements OnInit {
     }
   
     const touch = event.changedTouches[0];
-    const dropZone = document.getElementById(targetId);
+    const dropZone = document.getElementById('drop-' + targetId);
+
   
     if (dropZone && touch) {
       const dropZoneRect = dropZone.getBoundingClientRect();
@@ -182,8 +212,21 @@ export class ObiteljPage implements OnInit {
   
       // Reattach the element to the container if not dropped in a valid zone
       const container = document.getElementById('img-container') as HTMLElement;
-      if (container && !this.droppedImages[draggedImageId as keyof typeof this.droppedImages]) {
-        container.appendChild(draggingElement);
+      if (!this.droppedImages[draggedImageId as keyof typeof this.droppedImages]) {
+        const originalLeft = draggingElement.getAttribute('data-original-left');
+        const originalTop = draggingElement.getAttribute('data-original-top');
+        const originalParentId = draggingElement.getAttribute('data-original-parent-id');
+        const originalParent = originalParentId ? document.getElementById(originalParentId) : null;
+
+        console.log("obitelj: ", originalLeft, originalTop, originalParentId, originalParent)
+
+        if (originalParent) {
+          originalParent.appendChild(draggingElement);
+        }
+
+        draggingElement.style.position = '';
+        draggingElement.style.left = '';
+        draggingElement.style.top = '';
       }
     }
   }
@@ -218,6 +261,9 @@ export class ObiteljPage implements OnInit {
               touch.clientY < containerRect.top ||
               touch.clientY > containerRect.bottom
             ) {
+                if (!document.body.contains(draggingElement)) {
+                  document.body.appendChild(draggingElement); // ✅ move image first
+                }
               this.showImage = false; 
               document.body.appendChild(draggingElement);
               draggingElement.style.width = '20vmin';
@@ -246,6 +292,7 @@ export class ObiteljPage implements OnInit {
   }
 
   nextPage() {
-    this.router.navigate(['/staniste']);
+    this.stopBackgroundMusic();
+    this.router.navigateByUrl('/staniste', { replaceUrl: true });
   }
 }

@@ -15,34 +15,38 @@ const routes: Routes = [
   },
   {
     path: 'obitelj',
-    loadChildren: () => import('./pages/obitelj/obitelj.module').then( m => m.ObiteljPageModule)
+    loadChildren: () => import('./pages/obitelj/obitelj.module').then( m => m.ObiteljPageModule),
+    canLoad: [ReadyPageGuard]
   },
   {
     path: 'staniste',
-    loadChildren: () => import('./pages/staniste/staniste.module').then( m => m.StanistePageModule)
+    loadChildren: () => import('./pages/staniste/staniste.module').then( m => m.StanistePageModule),
+    canLoad: [ReadyPageGuard]
   },
   {
     path: 'gradnja',
-    loadChildren: () => import('./pages//gradnja/gradnja.module').then( m => m.GradnjaPageModule)
+    loadChildren: () => import('./pages//gradnja/gradnja.module').then( m => m.GradnjaPageModule),
+    canLoad: [ReadyPageGuard]
   },
   {
     path: 'okolis',
-    loadChildren: () => import('./pages/okolis/okolis.module').then( m => m.OkolisPageModule)
+    loadChildren: () => import('./pages/okolis/okolis.module').then( m => m.OkolisPageModule),
+    canLoad: [ReadyPageGuard]
   },
   {
     path: 'zastita',
-    loadChildren: () => import('./pages/zastita/zastita.module').then( m => m.ZastitaPageModule)
+    loadChildren: () => import('./pages/zastita/zastita.module').then( m => m.ZastitaPageModule),
+    canLoad: [ReadyPageGuard]
   },
   {
     path: 'end',
-    loadChildren: () => import('./pages/end/end.module').then( m => m.EndPageModule)
+    loadChildren: () => import('./pages/end/end.module').then( m => m.EndPageModule),
+    canLoad: [ReadyPageGuard]
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
