@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./end.page.scss'],
 })
 export class EndPage implements OnInit, OnDestroy {
-
+  backgroundMusic!: HTMLAudioElement
   private backButtonSub!: Subscription;
 
   constructor(
@@ -19,6 +19,7 @@ export class EndPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.startBackgroundMusic();
     this.backButtonSub = this.platform.backButton.subscribeWithPriority(9999, () => {
       console.log('Back button disabled');
     });
@@ -27,6 +28,42 @@ export class EndPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.backButtonSub) {
       this.backButtonSub.unsubscribe();
+    }
+  }
+
+  ionViewWillLeave() {
+    this.stopBackgroundMusic();
+  }
+
+  startBackgroundMusic() {
+  if (this.backgroundMusic) {
+    this.backgroundMusic.pause();
+    this.backgroundMusic.currentTime = 0;
+  }
+
+  this.backgroundMusic = new Audio('assets/sounds/spring-time-lofi.mp3');
+  this.backgroundMusic.loop = true;
+  this.backgroundMusic.volume = 0.5;
+  this.backgroundMusic.play().catch(error => {
+    console.error('Error playing background music:', error);
+  });
+}
+
+  stopBackgroundMusic() {
+    if (this.backgroundMusic) {
+      this.backgroundMusic.pause();
+      this.backgroundMusic.currentTime = 0;
+      this.backgroundMusic = undefined as any;
+    }
+  }
+
+    toggleMusic() {
+    if (this.backgroundMusic) {
+      if (this.backgroundMusic.paused) {
+        this.backgroundMusic.play();
+      } else {
+        this.backgroundMusic.pause();
+      }
     }
   }
 

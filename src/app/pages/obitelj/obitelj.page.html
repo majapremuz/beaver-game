@@ -5,9 +5,19 @@
   </ion-button>
   
 
-  <ion-button (click)="toggleImage()" class="toggleBtn">
+  <ion-button *ngIf="!puzzleComplete" (click)="toggleImage()" class="toggleBtn">
     <p class="toggleBtnText">KLIKNI</p>
   </ion-button>
+
+  <div class="infoBtn-container" *ngIf="puzzleComplete">
+    <ion-button (click)="toggleInfo()" class="infoBtn">
+    <p class="toggleBtnText">INFO</p>
+  </ion-button>
+
+  <ion-button class="nextBtn" (click)="nextPage()">
+    <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
+  </ion-button>
+  </div>
 
   <!-- Image Container with draggable images -->
   <div id="img-container" class="img-container" [class.show]="showImage">
@@ -60,9 +70,6 @@
         Masivne su i zdepaste građe, izvrsni plivači i ronioci. Duljina tijela dosegne 1 metar, visina u hrptu je do 30 cm, a rep je širok i plosnat 
         duljine do 30 cm. Masa odrasle jedinke 20 je do 30 kg. Boja dlake je tamnokestenjasta do sivkasta, na trbuhu je svjetlija dlaka.
       </p>
-      <ion-button class="nextBtn" (click)="nextPage()">
-        <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
-      </ion-button>
     </div>
     
   </div>

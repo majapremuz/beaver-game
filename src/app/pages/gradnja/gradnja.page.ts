@@ -13,6 +13,7 @@ export class GradnjaPage implements OnInit, OnDestroy {
   showImage = false;
   showInfo = false; 
   showError = false;
+  puzzleComplete = false;
   backgroundMusic!: HTMLAudioElement;
   private isDragging = false;
   private startX = 0;
@@ -56,6 +57,7 @@ export class GradnjaPage implements OnInit, OnDestroy {
     this.showImage = false;
     this.showInfo = false;
     this.showError = false;
+    this.puzzleComplete = false
   
     this.droppedImages = {
       damm: false,
@@ -103,6 +105,10 @@ export class GradnjaPage implements OnInit, OnDestroy {
   toggleImage() {
   this.showImage = !this.showImage;
 }
+
+toggleInfo() {
+    this.showInfo = !this.showInfo;
+  }
 
   // Start the drag operation and store the imageId
   touchStart(event: TouchEvent, imageId: string) {
@@ -264,10 +270,11 @@ export class GradnjaPage implements OnInit, OnDestroy {
 
   // Check if all images have been dropped in the correct spots
   checkCompletion() {
-    if (Object.values(this.droppedImages).every(value => value === true)) {
-      this.showInfo = true;
-    }
+  if (Object.values(this.droppedImages).every(value => value === true)) {
+    this.puzzleComplete = true;
+    this.showImage = false; 
   }
+}
 
   // Function to play a sound based on success or failure
   playSound(type: 'correct' | 'wrong') {

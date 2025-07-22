@@ -13,6 +13,7 @@ export class OkolisPage implements OnInit, OnDestroy {
   showImage = false;
   showInfo = false; 
   showError = false;
+  puzzleComplete = false
   backgroundMusic!: HTMLAudioElement;
   private isDragging = false;
   private startX = 0;
@@ -56,6 +57,7 @@ export class OkolisPage implements OnInit, OnDestroy {
     this.showImage = false;
     this.showInfo = false;
     this.showError = false;
+    this.puzzleComplete = false;
   
     this.droppedImages = {
       drvo: false
@@ -102,15 +104,11 @@ export class OkolisPage implements OnInit, OnDestroy {
   
   toggleImage() {
   this.showImage = !this.showImage;
-
-  if (this.showImage) {
-    this.cdr.detectChanges();
-
-    setTimeout(() => {
-      this.addTouchListeners();
-    }, 50);
-  }
 }
+
+toggleInfo() {
+    this.showInfo = !this.showInfo;
+  }
 
 addTouchListeners() {
   const images = document.querySelectorAll('.draggable-img');
@@ -289,10 +287,11 @@ addTouchListeners() {
 
   // Check if all images have been dropped in the correct spots
   checkCompletion() {
-    if (Object.values(this.droppedImages).every(value => value === true)) {
-      this.showInfo = true;
-    }
+  if (Object.values(this.droppedImages).every(value => value === true)) {
+    this.puzzleComplete = true;
+    this.showImage = false; 
   }
+}
 
   // Function to play a sound based on success or failure
   playSound(type: 'correct' | 'wrong') {

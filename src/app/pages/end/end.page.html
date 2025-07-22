@@ -1,24 +1,24 @@
 <ion-content [fullscreen]="true">
   <div class="container">
-    <img src="assets/dabar.jpg" alt="dabar">
-  <h1>Hvala vam na igranju</h1>
-  <ion-card (click)="startGame()">
-    <ng-container>
-      <img src="assets/menu.png" alt="menu icon" class="card-image">
+    <ion-button (click)="toggleMusic()" class="musicBtn">
+    <ion-icon *ngIf="backgroundMusic?.paused" name="play"></ion-icon>
+    <ion-icon *ngIf="!backgroundMusic?.paused" name="pause"></ion-icon>
+  </ion-button>
+
+  <div class="btn-container">
+    <ion-button (click)="startGame()" class="startBtn">
       <p>
         IGRAJ PONOVNO
       </p>
-    </ng-container>
-  </ion-card>
+  </ion-button>
 
-  <ion-card (click)="exit()">
-    <ng-container>
-      <img src="assets/menu.png" alt="menu icon" class="card-image">
+  <ion-button (click)="exit()" class="exitBtn">
       <p>
         IZAĐI IZ IGRE
       </p>
-    </ng-container>
-  </ion-card>
+  </ion-button>
+  </div>
+  
   
   </div>
 </ion-content>

@@ -26,7 +26,8 @@ ion-content {
     --background: #93dce8;
   }
 
-  .nextBtn {
+  .nextBtn,
+  .infoBtn {
     --background: transparent;
     --box-shadow: none;
     display: flex;
@@ -53,6 +54,17 @@ ion-content {
     align-items: center;
     flex-direction: column;
     overflow-y: none;
+  }
+
+  .infoBtn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
   }
   
   .img-container.show {
@@ -151,7 +163,7 @@ ion-content {
     margin: 1rem auto;
     padding: 1rem;
     position: absolute;
-    top: 0;
+    top: -6%;
     left: 50%;
     transform: translate(-50%, -10%);
     max-height: 105vmin;

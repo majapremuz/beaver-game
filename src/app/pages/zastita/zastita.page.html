@@ -5,9 +5,19 @@
   </ion-button>
   
 
-  <ion-button (click)="toggleImage()" class="toggleBtn">
+  <ion-button *ngIf="!puzzleComplete" (click)="toggleImage()" class="toggleBtn">
     <p class="toggleBtnText">KLIKNI</p>
   </ion-button>
+
+  <div class="infoBtn-container" *ngIf="puzzleComplete">
+    <ion-button (click)="toggleInfo()" class="infoBtn">
+    <p class="toggleBtnText">INFO</p>
+  </ion-button>
+
+  <ion-button class="nextBtn" (click)="nextPage()">
+    <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
+  </ion-button>
+  </div>
 
   <!-- Image Container with draggable images -->
   <div id="img-container" class="img-container" [class.show]="showImage">
@@ -77,9 +87,6 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt quam repudiandae consequatur iure nobis voluptatum, repellat temporibus vitae dolore voluptas quis magni totam aperiam placeat. Cumque nobis sapiente facilis quae!
         Adipisci, voluptatum labore dicta fugiat libero excepturi provident voluptas error omnis vitae voluptatibus impedit tenetur laboriosam tempore aperiam, sed similique repellat quidem. Laborum alias itaque non minus cupiditate eos sequi.
       </p>
-      <ion-button class="nextBtn" (click)="nextPage()">
-        <p class="nextBtnText" (click)="nextPage()">NASTAVI</p>
-      </ion-button>
     </div>
     
   </div>
