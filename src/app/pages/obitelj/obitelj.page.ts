@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { PointService } from 'src/app/services/points.service';
 
 @Component({
   selector: 'app-obitelj',
@@ -32,7 +33,8 @@ export class ObiteljPage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private platform: Platform,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private pointService: PointService
   ) {}
 
   ngOnInit() {
@@ -61,6 +63,8 @@ export class ObiteljPage implements OnInit, OnDestroy {
     this.showInfo = false;
     this.showError = false;
     this.puzzleComplete = false;
+    this.pointService.resetPoints();
+
   
     this.droppedImages = {
       dabar1: false,
@@ -176,6 +180,11 @@ export class ObiteljPage implements OnInit, OnDestroy {
       ) {
         if (draggedImageId === targetId) {
           this.playSound('correct');
+
+          if (!this.droppedImages[draggedImageId as keyof typeof this.droppedImages]) {
+              this.pointService.addPoints(1);
+            }
+  
           this.droppedImages[draggedImageId as keyof typeof this.droppedImages] = true;
           this.checkCompletion();
           dropZone.classList.add('dropped');

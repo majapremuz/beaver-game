@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { App } from '@capacitor/app';
 import { Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { PointService } from 'src/app/services/points.service';
 
 @Component({
   selector: 'app-end',
@@ -10,12 +11,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./end.page.scss'],
 })
 export class EndPage implements OnInit, OnDestroy {
+  totalScore: number = 0;
   backgroundMusic!: HTMLAudioElement
   private backButtonSub!: Subscription;
 
   constructor(
     private router: Router,
-    private platform: Platform
+    private platform: Platform,
+    private pointService: PointService
   ) { }
 
   ngOnInit() {
@@ -30,6 +33,10 @@ export class EndPage implements OnInit, OnDestroy {
       this.backButtonSub.unsubscribe();
     }
   }
+
+  ionViewWillEnter() {
+  this.totalScore = this.pointService.getPoints();
+}
 
   ionViewWillLeave() {
     this.stopBackgroundMusic();

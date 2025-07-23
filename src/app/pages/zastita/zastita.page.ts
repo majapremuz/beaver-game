@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { PointService } from 'src/app/services/points.service';
 
 @Component({
   selector: 'app-zastita',
@@ -34,7 +35,8 @@ export class ZastitaPage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private platform: Platform,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private pointService: PointService
   ) {}
 
   ngOnInit() {
@@ -63,6 +65,7 @@ export class ZastitaPage implements OnInit, OnDestroy {
     this.showInfo = false;
     this.showError = false;
     this.puzzleComplete = false;
+    this.pointService.resetPoints();
   
     this.droppedImages = {
       mreza1: false,
@@ -144,7 +147,9 @@ export class ZastitaPage implements OnInit, OnDestroy {
   touchEnd(event: TouchEvent, targetId: string) {
     const draggingElement = document.querySelector('[data-dragging]') as HTMLElement;
     const draggedImageId = draggingElement?.getAttribute('data-dragging');
-  
+
+    console.log("draggedImageId obitelj: ", draggedImageId);
+
     if (!draggedImageId || !this.isDragging) {
       // If not dragging, reset and exit
       if (draggingElement) {
@@ -175,6 +180,11 @@ export class ZastitaPage implements OnInit, OnDestroy {
       ) {
         if (draggedImageId === targetId) {
           this.playSound('correct');
+
+          if (!this.droppedImages[draggedImageId as keyof typeof this.droppedImages]) {
+              this.pointService.addPoints(1);
+            }
+  
           this.droppedImages[draggedImageId as keyof typeof this.droppedImages] = true;
           this.checkCompletion();
           dropZone.classList.add('dropped');
@@ -222,6 +232,8 @@ export class ZastitaPage implements OnInit, OnDestroy {
         const originalTop = draggingElement.getAttribute('data-original-top');
         const originalParentId = draggingElement.getAttribute('data-original-parent-id');
         const originalParent = originalParentId ? document.getElementById(originalParentId) : null;
+
+        console.log("obitelj: ", originalLeft, originalTop, originalParentId, originalParent)
 
         if (originalParent) {
           originalParent.appendChild(draggingElement);

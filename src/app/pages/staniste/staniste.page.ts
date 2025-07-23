@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { PointService } from 'src/app/services/points.service';
 
 @Component({
   selector: 'app-staniste',
@@ -31,7 +32,8 @@ export class StanistePage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private platform: Platform,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private pointService: PointService
   ) {}
 
   ngOnInit() {
@@ -63,6 +65,7 @@ export class StanistePage implements OnInit, OnDestroy {
     this.showInfo = false;
     this.showError = false;
     this.puzzleComplete = false;
+    this.pointService.resetPoints();
   
     this.droppedImages = {
       drvo1: false,
@@ -141,12 +144,11 @@ export class StanistePage implements OnInit, OnDestroy {
 
   
   touchEnd(event: TouchEvent, targetId: string) {
-    console.log('TOUCH END TRIGGERED ON staniste:', targetId);
     const draggingElement = document.querySelector('[data-dragging]') as HTMLElement;
     const draggedImageId = draggingElement?.getAttribute('data-dragging');
 
-    console.log("draggedImageId staniste: ", draggedImageId);
-  
+    console.log("draggedImageId obitelj: ", draggedImageId);
+
     if (!draggedImageId || !this.isDragging) {
       // If not dragging, reset and exit
       if (draggingElement) {
@@ -154,8 +156,8 @@ export class StanistePage implements OnInit, OnDestroy {
         draggingElement.style.position = '';
         draggingElement.style.left = '';
         draggingElement.style.top = '';
-        draggingElement.style.width = '';
-        draggingElement.style.height = '';
+        draggingElement.style.width = ''; // Reset width
+        draggingElement.style.height = ''; // Reset height
         draggingElement.removeAttribute('data-dragging');
       }
       return;
@@ -163,6 +165,7 @@ export class StanistePage implements OnInit, OnDestroy {
   
     const touch = event.changedTouches[0];
     const dropZone = document.getElementById('drop-' + targetId);
+
   
     if (dropZone && touch) {
       const dropZoneRect = dropZone.getBoundingClientRect();
@@ -176,6 +179,11 @@ export class StanistePage implements OnInit, OnDestroy {
       ) {
         if (draggedImageId === targetId) {
           this.playSound('correct');
+
+          if (!this.droppedImages[draggedImageId as keyof typeof this.droppedImages]) {
+              this.pointService.addPoints(1);
+            }
+  
           this.droppedImages[draggedImageId as keyof typeof this.droppedImages] = true;
           this.checkCompletion();
           dropZone.classList.add('dropped');
@@ -224,7 +232,7 @@ export class StanistePage implements OnInit, OnDestroy {
         const originalParentId = draggingElement.getAttribute('data-original-parent-id');
         const originalParent = originalParentId ? document.getElementById(originalParentId) : null;
 
-        console.log("stanište: ", originalLeft, originalTop, originalParentId, originalParent);
+        console.log("obitelj: ", originalLeft, originalTop, originalParentId, originalParent)
 
         if (originalParent) {
           originalParent.appendChild(draggingElement);
