@@ -1,0 +1,12 @@
+{
+	"appId": "io.ionic.beaverGame",
+	"appName": "Beaver - Dabar",
+	"webDir": "www",
+	"packageClassList": [
+		"AppPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"SplashScreenPlugin",
+		"StatusBarPlugin"
+	]
+}

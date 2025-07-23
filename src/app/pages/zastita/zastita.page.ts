@@ -65,7 +65,6 @@ export class ZastitaPage implements OnInit, OnDestroy {
     this.showInfo = false;
     this.showError = false;
     this.puzzleComplete = false;
-    this.pointService.resetPoints();
   
     this.droppedImages = {
       mreza1: false,

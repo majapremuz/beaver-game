@@ -60,7 +60,6 @@ export class GradnjaPage implements OnInit, OnDestroy {
     this.showInfo = false;
     this.showError = false;
     this.puzzleComplete = false;
-    this.pointService.resetPoints();
 
   
     this.droppedImages = {

@@ -65,8 +65,7 @@ export class StanistePage implements OnInit, OnDestroy {
     this.showInfo = false;
     this.showError = false;
     this.puzzleComplete = false;
-    this.pointService.resetPoints();
-  
+    
     this.droppedImages = {
       drvo1: false,
       drvo2: false, 
